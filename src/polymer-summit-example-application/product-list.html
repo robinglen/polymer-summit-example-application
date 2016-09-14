@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-summit-example-component/simple-product.html">
+
+<dom-module id="product-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+        display:flex;
+        justify-content: center;
+      }
+    </style>
+    <template is="dom-repeat" items="[[products]]" as="product">
+      <simple-product product=[[product]]></simple-product>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'product-list',
+      properties: {
+        products: {
+          type: Array,
+          value: []
+        }
+      },
+
+    });
+  </script>
+</dom-module>

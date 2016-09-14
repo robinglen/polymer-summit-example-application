@@ -1,0 +1,7 @@
+{
+  "name": "polymer-summit-example-application",
+  "short_name": "polymer-summit-example-application",
+  "description": "An example of a simple product list application to show some design and test principles.",
+  "start_url": "/",
+  "display": "standalone"
+}

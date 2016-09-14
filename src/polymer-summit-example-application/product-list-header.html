@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="product-list-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+        text-align: center
+      }
+    </style>
+    <h2>[[title]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'product-list-header',
+      properties: {
+        title: {
+          type: String,
+          value: ''
+        }
+      },
+
+    });
+  </script>
+</dom-module>

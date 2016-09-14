@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="product-list-header.html">
+<link rel="import" href="product-list.html">
+<link rel="import" href="product-list-pagination.html">
+
+<dom-module id="product-list-app">
+    <template>
+        <style>
+             :host {
+                display: block
+            }
+        </style>
+
+        <iron-ajax
+            id="ajax"
+            auto="true"
+            handle-as="json"
+            url="[[url]]"
+            last-response="{{apiResponse}}"
+        >
+        </iron-ajax>
+        <product-list-header title="[[apiResponse.metadata.title]]"></product-list-header>
+        <product-list products="[[apiResponse.products]]"></product-list>
+        <product-list-pagination></product-list-pagination>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'product-list-app',
+
+            properties: {
+                // api url
+                url: {
+                    type: String,
+                    computed: '_computeApiUrl(npp, pn)'
+                },
+                // api response
+                apiResponse: Object,
+                // products per page
+                npp: {
+                    type: Number,
+                    value: 3,
+                },
+                // page number
+                pn: {
+                    type: Number,
+                    value: 1
+                }
+            },
+            /**
+             * Generates an image URL for the product
+             * @param {Number} productsPerPage - number of products per page
+             * @param {Number} pageNumber - number of current page
+             * @return {String} api - api url
+             */
+            _computeApiUrl: function(productsPerPage, pageNumber) {
+                // hardcoded for demo - could be configurable
+                var apiHost = 'http://localhost:5001';
+                var offset = (pageNumber - 1) * productsPerPage;
+                var path = [
+                    apiHost,
+                    'API',
+                    productsPerPage,
+                    offset,
+                    'products.json'
+                ].join('/');
+
+                return path
+
+            },
+        });
+    </script>
+</dom-module>

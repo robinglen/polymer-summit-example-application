@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="product-list-pagination">
+  <template>
+    <style>
+      :host {
+        display: block;
+        text-align: center
+      }
+    </style>
+    <div id="controls">
+      <button>Previous</button>
+      <button>Next</button>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'product-list-pagination',
+      properties: {
+        title: {
+          type: String,
+          value: ''
+        }
+      },
+
+    });
+  </script>
+</dom-module>
