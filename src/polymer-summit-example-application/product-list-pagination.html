@@ -9,7 +9,7 @@
       }
     </style>
     <div id="controls">
-      <button>Previous</button>
+      <button disabled="{{previous.disabled}}">Previous</button>
       <button>Next</button>
     </div>
   </template>
@@ -18,9 +18,18 @@
     Polymer({
       is: 'product-list-pagination',
       properties: {
-        title: {
-          type: String,
-          value: ''
+        pn: {
+          type: Number,
+          value: 1,
+          notify: true
+        },
+        previous:{
+          type: Object,
+          computed: '_computePagination("previous", pn)'
+        },
+        next:{
+          type: Object,
+          computed: '_computePagination("next", pn)'
         }
       },
 
