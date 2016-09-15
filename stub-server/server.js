@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const pl1 = fs.readFileSync(path.join(__dirname, 'responses/product-list-1.json'));
-const pl2 = fs.readFileSync(path.join(__dirname, 'responses/product-list-1.json'));
-const pl3 = fs.readFileSync(path.join(__dirname, 'responses/product-list-1.json'));
+const pl2 = fs.readFileSync(path.join(__dirname, 'responses/product-list-2.json'));
+const pl3 = fs.readFileSync(path.join(__dirname, 'responses/product-list-3.json'));
 
 const server = http.createServer(serve);
 

@@ -9,8 +9,9 @@
       }
     </style>
     <div id="controls">
-      <button disabled="{{previous.disabled}}">Previous</button>
-      <button>Next</button>
+      <button id="previous" disabled="[[previous.disabled]]" on-click="_paginatePrevious">Previous</button>
+      <div id="description">Page [[pn]] of [[totalPages]]</div>
+      <button id="next" disabled="[[next.disabled]]" on-click="_paginateNext">Next</button>
     </div>
   </template>
 
@@ -18,10 +19,21 @@
     Polymer({
       is: 'product-list-pagination',
       properties: {
+        npp: {
+          type: Number,
+          value: 60
+        },
         pn: {
           type: Number,
           value: 1,
           notify: true
+        },
+        // Total number of products in the list
+        totalProducts: Number,
+        // Total number of product pages
+        totalPages: {
+          type: Number,
+          computed: '_computeTotalPages(npp, totalProducts)'
         },
         previous:{
           type: Object,
@@ -29,9 +41,47 @@
         },
         next:{
           type: Object,
-          computed: '_computePagination("next", pn)'
+          computed: '_computePagination("next", pn, totalPages)'
         }
       },
+
+      _computeTotalPages: function(npp, totalProducts) {
+        return Math.ceil((totalProducts / npp));
+      },
+
+      _computePagination: function(direction, pn, totalPages) {
+        var disabled = true;
+        // if the pagination request is for next
+        if (direction === 'next') {
+          if (pn < totalPages) {
+            pn++;
+            disabled = false;
+          }
+        }
+
+        // if the pagination request is for previous
+        if (direction === 'previous') {
+          if (pn > 1) {
+            pn--;
+            disabled = false;
+          }
+        }
+
+        return {
+          disabled: disabled
+        }
+
+      },
+
+      _paginateNext: function() {
+        this.set('pn', this.pn + 1);
+        //track pagination
+      },
+
+      _paginatePrevious: function() {
+        this.set('pn', this.pn - 1);
+        //track pagination
+      }
 
     });
   </script>

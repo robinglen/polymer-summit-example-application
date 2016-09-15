@@ -22,7 +22,7 @@
         </iron-ajax>
         <product-list-header title="[[apiResponse.metadata.title]]"></product-list-header>
         <product-list products="[[apiResponse.products]]"></product-list>
-        <product-list-pagination pn=[[pn]]></product-list-pagination>
+        <product-list-pagination npp="[[npp]]" pn="{{pn}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
     </template>
 
     <script>
@@ -47,6 +47,10 @@
                 pn: {
                     type: Number,
                     value: 1
+                },
+                hostAttributes: {
+                    itemtype: 'http://schema.org/ItemList',
+                    itemscope: true
                 }
             },
             /**

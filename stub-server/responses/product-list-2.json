@@ -1,0 +1,66 @@
+{
+  "products" : [
+    {
+      "locale": "en-GB",
+      "name":"Velvet-paneled denim coat",
+      "key": "velvet-paneled-denim-coat",
+      "price":{
+        "currency":"GBP",
+        "amount":2890
+      },
+      "brand":{
+        "name":"MIU MIU",
+        "key":"miu_miu"
+      },
+      "id":760351,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/760351/760351_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/760351/760351_ou_sl.jpg"
+      }
+    },
+    {
+      "locale": "en-GB",
+      "name":"The Rockstud printed leather point-toe flats",
+      "key": "the-rockstud-printed-leather-point-toe-flats",
+      "price":{
+        "currency":"GBP",
+        "amount":1175
+      },
+      "brand":{
+        "name":"VALENTINO",
+        "key":"Valentino"
+      },
+      "id":725891,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/725891/725891_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/725891/725891_ou_sl.jpg"
+      }
+    },
+    {
+      "locale": "en-GB",
+      "name":"Textured-leather shoulder bag",
+      "key": "textured-leather-shoulder-bag",
+      "price":{
+        "currency":"GBP",
+        "amount":1065
+      },
+      "brand":{
+        "name":"J.W.ANDERSON",
+        "key":"JWAnderson"
+      },
+      "id":731139,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/731139/731139_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/731139/731139_ou_sl.jpg"
+      }
+    }
+  ],
+  "metadata": {
+    "title": "demo list"
+  },
+  "listInfo": {
+    "limit": 3,
+    "offset": 3,
+    "total": 9
+  }
+}

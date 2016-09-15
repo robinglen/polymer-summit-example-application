@@ -1,0 +1,66 @@
+{
+  "products" : [
+    {
+      "locale": "en-GB",
+      "name":"Mario studded fringed suede shoulder bag",
+      "key": "mario-studded-fringed-suede-shoulder-bag",
+      "price":{
+        "currency":"GBP",
+        "amount":1040
+      },
+      "brand":{
+        "name":"JÉRÔME DREYFUSS",
+        "key":"Jerome_Dreyfuss"
+      },
+      "id":651118,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/651118/651118_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/651118/651118_ou_sl.jpg"
+      }
+    },
+    {
+      "locale": "en-GB",
+      "name":"Quilted shell jacket",
+      "key": "quilted-shell-jacket",
+      "price":{
+        "currency":"GBP",
+        "amount":595
+      },
+      "brand":{
+        "name":"BURBERRY BRIT",
+        "key":"Burberry_Brit"
+      },
+      "id":725891,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/625379/625379_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/625379/625379_ou_sl.jpg"
+      }
+    },
+    {
+      "locale": "en-GB",
+      "name":"The Pistol leather ankle boots",
+      "key": "the-pistol-leather-ankle-boots",
+      "price":{
+        "currency":"GBP",
+        "amount":570
+      },
+      "brand":{
+        "name":"ACNE STUDIOS",
+        "key":"Acne_Studios"
+      },
+      "id":430310,
+      "image": {
+        "primary" : "//cache.net-a-porter.com/images/products/430310/430310_in_sl.jpg",
+        "secondary" : "//cache.net-a-porter.com/images/products/430310/430310_ou_sl.jpg"
+      }
+    }
+  ],
+  "metadata": {
+    "title": "demo list"
+  },
+  "listInfo": {
+    "limit": 3,
+    "offset": 3,
+    "total": 9
+  }
+}
