@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>product-list-pagination tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+    <script src="../../../../iron-test-helpers/mock-interactions.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list-pagination.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list-pagination npp="10" pn="1" total-products="30"></product-list-pagination>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="last-page">
+      <template>
+        <product-list-pagination npp="10" pn="3" total-products="30"></product-list-pagination>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('product-list-header - unit tests', function() {
+
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'product-list-pagination');
+        });
+
+        test('Paging copy is correct', function() {
+          var copy = fixture('basic').$$('#description').textContent;
+          assert.equal(copy, 'Page 1 of 3');
+        });
+
+        test('Pressing on previous on the first page doesn\'t do anything', function() {
+          var pagination = fixture('basic');
+
+          // clicking button
+          MockInteractions.tap(pagination.$$('#previous'));
+
+          // check page has not been updated
+          var copy = fixture('basic').$$('#description').textContent;
+          var status = pagination.$$('#previous').hasAttribute('disabled');
+          var pn = fixture('basic').pn;
+          assert.isTrue(status);
+          assert.equal(copy, 'Page 1 of 3');
+          assert.equal(pn, 1);
+        });
+
+        test('Pressing on next on the first page goes to the next page', function(done) {
+            var pagination = fixture('basic');
+
+            // make sure the pagination event is fired
+            pagination.addEventListener('pagination', paginate);
+
+            // clicking button
+            MockInteractions.tap(pagination.$$('#next'));
+
+            // paginate
+            function paginate() {
+              // remove disabled on previous button
+              var status = pagination.$$('#previous').hasAttribute('disabled');
+              assert.isFalse(status);
+
+              // paging copy updates
+              var copy = pagination.$$('#description').textContent;
+              assert.equal(copy, 'Page 2 of 3');
+
+              // page number is updated
+              var pn = pagination.pn;
+              assert.equal(pn, 2);
+
+              done();
+            };
+        });
+
+        test('Pressing on next on the last page doesn\'t do anything', function() {
+          var pagination = fixture('last-page');
+
+          // clicking button
+          MockInteractions.tap(pagination.$$('#next'));
+
+          // check page has not been updated
+          var copy = pagination.$$('#description').textContent;
+          var status = pagination.$$('#next').hasAttribute('disabled');
+          var pn = pagination.pn;
+          assert.isTrue(status);
+          assert.equal(copy, 'Page 3 of 3');
+          assert.equal(pn, 3);
+        });
+
+        test('Pressing on previous on the last page goes to the previous page', function(done) {
+            var pagination = fixture('last-page');
+
+            // make sure the pagination event is fired
+            pagination.addEventListener('pagination', paginate);
+
+            // clicking button
+            MockInteractions.tap(pagination.$$('#previous'));
+
+            // paginate
+            function paginate() {
+
+              // paging copy updates
+              var copy = pagination.$$('#description').textContent;
+              assert.equal(copy, 'Page 2 of 3');
+
+              // page number is updated
+              var pn = pagination.pn;
+              assert.equal(pn, 2);
+
+              done();
+            };
+        });
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>product-list-pagination tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list-pagination.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list-pagination></product-list-pagination>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('product-list-header - unit tests', function() {
+
+        test('Checking it calculates the correct number of total pages', function() {
+          var totalPages = fixture('basic')._computeTotalPages(10, 100);
+          assert.equal(totalPages, 10);
+        });
+
+        // These tests on there being a total of three pages
+        test('If the user is on the first page, previous should be disabled, next enabled', function() {
+          var previous = fixture('basic')._computePagination('previous', 1);
+          var next = fixture('basic')._computePagination('next', 1, 3);
+          assert.isTrue(previous.disabled);
+          assert.isFalse(next.disabled);
+        });
+
+        test('If the user is on the second page, previous should be enabled, next enabled', function() {
+          var previous = fixture('basic')._computePagination('previous', 2);
+          var next = fixture('basic')._computePagination('next', 2, 3);
+          assert.isFalse(previous.disabled);
+          assert.isFalse(next.disabled);
+        });
+
+        test('If the user is on the third page, previous should be enabled, next disabled', function() {
+          var previous = fixture('basic')._computePagination('previous', 3);
+          var next = fixture('basic')._computePagination('next', 3, 3);
+          assert.isFalse(previous.disabled);
+          assert.isTrue(next.disabled);
+        });
+
+      });
+    </script>
+  </body>
+</html>

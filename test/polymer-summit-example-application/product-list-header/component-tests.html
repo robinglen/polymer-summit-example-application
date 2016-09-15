@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>product-list-header tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list-header.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list-header></product-list-header>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="overwrite-title">
+      <template>
+        <product-list-header title="Testing title"></product-list-header>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('product-list-header - component tests', function() {
+
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'product-list-header');
+        });
+
+        test('Checking default title is correct', function() {
+          var title = fixture('basic').$$('h2').textContent;
+          assert.equal(title, 'Product listing');
+        });
+
+        test('Checking overwritten title is correct', function() {
+          var title = fixture('overwrite-title').$$('h2').textContent;
+          assert.equal(title, 'Testing title');
+        });
+
+      });
+    </script>
+  </body>
+</html>

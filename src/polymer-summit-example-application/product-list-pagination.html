@@ -79,14 +79,14 @@
 
       },
 
-      _paginateNext: () => {
+      _paginateNext: function() {
         this.set('pn', this.pn + 1);
         this.fire('pagination', {
             pn: this.pn
         });
       },
 
-      _paginatePrevious () =>  {
+      _paginatePrevious: function()  {
         this.set('pn', this.pn - 1);
         this.fire('pagination', {
             pn: this.pn
