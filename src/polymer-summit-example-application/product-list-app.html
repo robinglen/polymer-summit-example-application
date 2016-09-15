@@ -21,8 +21,8 @@
         >
         </iron-ajax>
         <product-list-header title="[[apiResponse.metadata.title]]"></product-list-header>
-        <product-list products="[[apiResponse.products]]"></product-list>
         <product-list-pagination npp="[[npp]]" pn="{{pn}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
+        <product-list products="[[apiResponse.products]]"></product-list>
     </template>
 
     <script>

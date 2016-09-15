@@ -1,0 +1,42 @@
+<script>
+  /**
+   * Tracking behaviour
+   * Handling tracking for the listing page
+   */
+
+  var productListUtilities = productListUtilities || {};
+
+  productListUtilities.productListTrackingBehavior = {
+    properties: {
+      // `pageTracked` whether page has been tracked
+      pageTracked: {
+        type: Boolean,
+        value: false
+      }
+    },
+
+    // event listeners
+    listeners: {
+      pagination: '_trackEventPagination'
+    },
+
+    _trackEventPagination: (e) => {
+      function sendTrackingData() {
+        // Your beacon logic goes here
+        console.log('pagination', e.detail);
+      };
+      /**
+       * This is just a simple solution
+       * Read Paul Lewis's artcile about how to use rIC for analytics
+       * https://developers.google.com/web/updates/2015/08/using-requestidlecallback?hl=en
+       */
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(sendTrackingData);
+      } else {
+        sendTrackingData();
+      }
+    }
+
+  };
+
+</script>

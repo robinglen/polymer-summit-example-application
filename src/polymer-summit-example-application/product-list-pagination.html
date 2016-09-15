@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="tracking-behaviour.html">
 
 <dom-module id="product-list-pagination">
   <template>
@@ -18,6 +19,9 @@
   <script>
     Polymer({
       is: 'product-list-pagination',
+      behaviors: [
+          productListUtilities.productListTrackingBehavior
+      ],
       properties: {
         npp: {
           type: Number,
@@ -75,12 +79,16 @@
 
       _paginateNext: function() {
         this.set('pn', this.pn + 1);
-        //track pagination
+        this.fire('pagination', {
+            pn: this.pn
+        });
       },
 
       _paginatePrevious: function() {
         this.set('pn', this.pn - 1);
-        //track pagination
+        this.fire('pagination', {
+            pn: this.pn
+        });
       }
 
     });
