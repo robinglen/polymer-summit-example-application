@@ -23,13 +23,12 @@
         <product-list-header title="[[apiResponse.metadata.title]]"></product-list-header>
         <product-list-pagination npp="[[npp]]" pn="{{pn}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
         <product-list products="[[apiResponse.products]]"></product-list>
+
     </template>
 
     <script>
         Polymer({
-
             is: 'product-list-app',
-
             properties: {
                 // api url
                 url: {
@@ -47,10 +46,6 @@
                 pn: {
                     type: Number,
                     value: 1
-                },
-                hostAttributes: {
-                    itemtype: 'http://schema.org/ItemList',
-                    itemscope: true
                 }
             },
             /**
@@ -59,7 +54,7 @@
              * @param {Number} pageNumber - number of current page
              * @return {String} api - api url
              */
-            _computeApiUrl: function(productsPerPage, pageNumber) {
+            _computeApiUrl: (productsPerPage, pageNumber) => {
                 // hardcoded for demo - could be configurable
                 var apiHost = 'http://localhost:5001';
                 var offset = (pageNumber - 1) * productsPerPage;

@@ -23,10 +23,12 @@
           productListUtilities.productListTrackingBehavior
       ],
       properties: {
+        // number of products per page
         npp: {
           type: Number,
           value: 60
         },
+        // page number
         pn: {
           type: Number,
           value: 1,
@@ -49,11 +51,11 @@
         }
       },
 
-      _computeTotalPages: function(npp, totalProducts) {
+      _computeTotalPages: (npp, totalProducts) => {
         return Math.ceil((totalProducts / npp));
       },
 
-      _computePagination: function(direction, pn, totalPages) {
+      _computePagination: (direction, pn, totalPages) => {
         var disabled = true;
         // if the pagination request is for next
         if (direction === 'next') {
@@ -77,14 +79,14 @@
 
       },
 
-      _paginateNext: function() {
+      _paginateNext: () => {
         this.set('pn', this.pn + 1);
         this.fire('pagination', {
             pn: this.pn
         });
       },
 
-      _paginatePrevious: function() {
+      _paginatePrevious () =>  {
         this.set('pn', this.pn - 1);
         this.fire('pagination', {
             pn: this.pn
