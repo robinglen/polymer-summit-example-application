@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>tracking-behaviour tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+    <script src="../../../../iron-test-helpers/mock-interactions.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list-pagination.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list-pagination npp="10" pn="1" total-products="30"></product-list-pagination>
+      </template>
+    </test-fixture>
+
+
+    <script>
+      suite('product-list-header - behaviour tests', function() {
+
+        test('Pressing on next on the first page calls _trackEventPagination', function() {
+              var pagination = fixture('basic');
+              var trackingStub = sinon.spy(productListUtilities.productListTrackingBehavior, '_trackEventPagination');
+              
+              // clicking button
+              MockInteractions.tap(pagination.$$('#next'));
+
+              assert.isTrue(trackingStub.called);
+              trackingStub.restore();
+
+              done();
+
+        });
+
+      });
+    </script>
+  </body>
+</html>

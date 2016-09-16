@@ -7,13 +7,6 @@
   var productListUtilities = productListUtilities || {};
 
   productListUtilities.productListTrackingBehavior = {
-    properties: {
-      // `pageTracked` whether page has been tracked
-      pageTracked: {
-        type: Boolean,
-        value: false
-      }
-    },
 
     // event listeners
     listeners: {
@@ -21,7 +14,7 @@
     },
 
     _trackEventPagination: (e) => {
-      function sendTrackingData() {
+      function _sendTrackingData() {
         // Your beacon logic goes here
         console.log('Tracking:', 'pagination', e.detail);
       };
@@ -31,9 +24,9 @@
        * https://developers.google.com/web/updates/2015/08/using-requestidlecallback?hl=en
        */
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(sendTrackingData);
+        requestIdleCallback(_sendTrackingData);
       } else {
-        sendTrackingData();
+        _sendTrackingData();
       }
     }
 

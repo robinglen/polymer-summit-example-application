@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>product-list-app tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+    <script src="../../../../iron-test-helpers/mock-interactions.js"></script>
+    <script src="../products.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list-app.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list-app></product-list-app>
+      </template>
+    </test-fixture>
+
+
+    <script>
+      suite('product-list-header - component tests', function() {
+
+        var element;
+        var server;
+
+        var responseHeaders = {
+          json: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+        setup(function(done) {
+           server = sinon.fakeServer.create();
+           server.respondWith(
+            'GET',
+            /\API.*/, [
+              200,
+              responseHeaders.json,
+              JSON.stringify(products)
+            ]
+          );
+           element = fixture('basic');
+           flush(function(){
+              server.respond();
+              done();
+           })
+        });
+
+        test('instantiating the element works', function() {
+          assert.equal(element.is, 'product-list-app');
+        });
+
+        // test('Checking product-list has simple-products rendered', function() {
+        //   var brandName = element.$$('product-list').$$('simple-product').$$('.brand-name').textContent
+        //   assert.equal(brandName, 'loveshackfancy');
+        // });
+
+
+      });
+    </script>
+  </body>
+</html>

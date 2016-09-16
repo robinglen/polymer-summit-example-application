@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>product-list tests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../../src/polymer-summit-example-application/product-list.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <product-list products='[
+          {
+            "locale": "en-GB",
+            "name":"Poppy off-the-shoulder embroidered cotton-poplin dress",
+            "key": "poppy-off-the-shoulder-embroidered-cotton-poplin-dress",
+            "price":{
+              "currency":"GBP",
+              "amount":2545
+            },
+            "brand":{
+              "name":"loveshackfancy",
+              "key":"loveshackfancy"
+            },
+            "id":594952,
+            "image": {
+              "primary" : "//cache.net-a-porter.com/images/products/756326/756326_in_sl.jpg",
+              "secondary" : "//cache.net-a-porter.com/images/products/756326/756326_ou_sl.jpg"
+            }
+          },
+          {
+            "locale": "en-GB",
+            "name":"Velvet-trimmed polka-dot cotton",
+            "key": "velvet-trimmed-polka-dot-cotton-and-wool-blend-blazer",
+            "price":{
+              "currency":"GBP",
+              "amount":1100
+            },
+            "brand":{
+              "name":"GUCCI",
+              "key":"gucci"
+            },
+            "id":714595,
+            "image": {
+              "primary" : "//cache.net-a-porter.com/images/products/714595/714595_in_sl.jpg",
+              "secondary" : "//cache.net-a-porter.com/images/products/714595/714595_ou_sl.jpg"
+            }
+          },
+          {
+            "locale": "en-GB",
+            "name":"Le Crop bootcut jeans",
+            "key": "le-crop-bootcut-jeans",
+            "price":{
+              "currency":"GBP",
+              "amount":225
+            },
+            "brand":{
+              "name":"FRAME",
+              "key":"Frame"
+            },
+            "id":716463,
+            "image": {
+              "primary" : "//cache.net-a-porter.com/images/products/716463/716463_in_sl.jpg",
+              "secondary" : "//cache.net-a-porter.com/images/products/716463/716463_ou_sl.jpg"
+            }
+          }
+        ]'></product-list>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('product-list - component tests', function() {
+
+
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'product-list');
+        });
+
+        test('Has rendered three different products', function(done) {
+          var element = fixture('basic');
+           // Wait for element to create any dom-repeat items, and run any functions
+          flush(function() {
+            var numberOfProducts = Polymer.dom(element.root).querySelectorAll('simple-product').length;
+            assert.equal(numberOfProducts, 3);
+            done();
+          });
+        });
+
+      });
+    </script>
+  </body>
+</html>
