@@ -2,31 +2,51 @@
 <link rel="import" href="../../bower_components/polymer-summit-example-component/simple-product.html">
 
 <dom-module id="product-list">
-  <template>
-    <style>
-      :host {
-        display: block;
-        display:flex;
-        justify-content: center;
-      }
-    </style>
+    <template>
+        <style>
+             :host {
+                 margin: 0 auto 30px;
+                 display: flex;
+                 flex-wrap: wrap;
+            }
 
-    <template is="dom-repeat" items="[[products]]" as="product">
-      <simple-product product=[[product]]></simple-product>
+            simple-product {
+                flex: 1 50%;
+                max-width: 50%;
+            }
+
+            @media (min-width: 501px) and (max-width: 800px) {
+                simple-product {
+                    flex: 1 33%;
+                    max-width: 33%;
+                }
+            }
+
+            @media (min-width: 801px) {
+                simple-product {
+                    padding: 0 1.5%;
+                    flex: 1 25%;
+                    max-width: 25%;
+                }
+            }
+        </style>
+
+        <template is="dom-repeat" items="[[products]]" as="product">
+            <simple-product product=[[product]]></simple-product>
+        </template>
+
     </template>
 
-  </template>
+    <script>
+        Polymer({
+            is: 'product-list',
+            properties: {
+                products: {
+                    type: Array,
+                    value: []
+                }
+            },
 
-  <script>
-    Polymer({
-      is: 'product-list',
-      properties: {
-        products: {
-          type: Array,
-          value: []
-        }
-      },
-
-    });
-  </script>
+        });
+    </script>
 </dom-module>
