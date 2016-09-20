@@ -10,10 +10,10 @@ const server = http.createServer(serve);
 
 function successResponse(req, res) {
   var data = pl1;
-  if (/\API\/3\/3\/.*/.test(req.url)){
+  if (/\API\/60\/60\/.*/.test(req.url)){
       data = pl2;
   }
-  if (/\API\/3\/6\/.*/.test(req.url)){
+  if (/\API\/60\/120\/.*/.test(req.url)){
       data = pl3;
   }
   res.statusCode = 200;
