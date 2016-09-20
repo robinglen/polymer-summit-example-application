@@ -48,6 +48,7 @@
                     value: 1
                 }
             },
+
             /**
              * Generates an image URL for the product
              * @param {Number} productsPerPage - number of products per page
@@ -58,17 +59,11 @@
                 // hardcoded for demo - could be configurable
                 var apiHost = 'http://localhost:5001';
                 var offset = (pageNumber - 1) * productsPerPage;
-                var path = [
-                    apiHost,
-                    'API',
-                    productsPerPage,
-                    offset,
-                    'products.json'
-                ].join('/');
+                var path = `${apiHost}/API/${productsPerPage}/${offset}/products.json`;
 
                 return path
+            }
 
-            },
         });
     </script>
 </dom-module>

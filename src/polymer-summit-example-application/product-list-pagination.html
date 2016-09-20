@@ -9,19 +9,23 @@
         text-align: center
       }
     </style>
+
     <div id="controls">
       <button id="previous" disabled="[[previous.disabled]]" on-click="_paginatePrevious">Previous</button>
       <div id="description">Page [[pn]] of [[totalPages]]</div>
       <button id="next" disabled="[[next.disabled]]" on-click="_paginateNext">Next</button>
     </div>
+
   </template>
 
   <script>
     Polymer({
       is: 'product-list-pagination',
+
       behaviors: [
           productListUtilities.productListTrackingBehavior
       ],
+
       properties: {
         // number of products per page
         npp: {
