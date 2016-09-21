@@ -22,7 +22,7 @@
 
 
     <script>
-      suite('product-list-header - component tests', function() {
+      suite('product-list-header - component tests', () => {
 
         var element;
         var server;
@@ -33,7 +33,7 @@
           }
         };
 
-        setup(function(done) {
+        setup((done) => {
            server = sinon.fakeServer.create();
            server.respondWith(
             'GET',
@@ -50,9 +50,11 @@
            })
         });
 
-        test('instantiating the element works', function() {
+        test('instantiating the element works', () => {
           assert.equal(element.is, 'product-list-app');
         });
+
+        // TODO: argh need get this passing
 
         // test('Checking product-list has simple-products rendered', function() {
         //   var brandName = element.$$('product-list').$$('simple-product').$$('.brand-name').textContent

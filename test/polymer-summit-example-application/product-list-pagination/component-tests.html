@@ -26,19 +26,19 @@
     </test-fixture>
 
     <script>
-      suite('product-list-header - component tests', function() {
+      suite('product-list-header - component tests', () => {
 
-        test('instantiating the element works', function() {
+        test('instantiating the element works', () => {
           var element = fixture('basic');
           assert.equal(element.is, 'product-list-pagination');
         });
 
-        test('Paging copy is correct', function() {
+        test('Paging copy is correct', () => {
           var copy = fixture('basic').$$('#description').textContent;
           assert.equal(copy, 'Page 1 of 3');
         });
 
-        test('Pressing on previous on the first page doesn\'t do anything', function() {
+        test('Pressing on previous on the first page doesn\'t do anything', () => {
           var pagination = fixture('basic');
 
           // clicking button
@@ -53,7 +53,7 @@
           assert.equal(pn, 1);
         });
 
-        test('Pressing on next on the first page goes to the next page', function(done) {
+        test('Pressing on next on the first page goes to the next page', (done) => {
             var pagination = fixture('basic');
 
             // make sure the pagination event is fired
@@ -80,7 +80,7 @@
             };
         });
 
-        test('Pressing on next on the last page doesn\'t do anything', function() {
+        test('Pressing on next on the last page doesn\'t do anything', () => {
           var pagination = fixture('last-page');
 
           // clicking button
@@ -95,7 +95,7 @@
           assert.equal(pn, 3);
         });
 
-        test('Pressing on previous on the last page goes to the previous page', function(done) {
+        test('Pressing on previous on the last page goes to the previous page', (done) => {
             var pagination = fixture('last-page');
 
             // make sure the pagination event is fired

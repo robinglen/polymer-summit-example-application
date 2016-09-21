@@ -19,14 +19,14 @@
     </test-fixture>
 
     <script>
-      suite('product-list-app - unit tests', function() {
+      suite('product-list-app - unit tests', () => {
 
-        test('Checking API URL for first page is generated correctly', function() {
+        test('Checking API URL for first page is generated correctly', () => {
           var url = fixture('basic')._computeApiUrl(60, 1);
           assert.equal(url, 'http://localhost:5001/API/60/0/products.json');
         });
 
-        test('Checking API URL for second page is generated correctly', function() {
+        test('Checking API URL for second page is generated correctly', () => {
           var url = fixture('basic')._computeApiUrl(60, 2);
           assert.equal(url, 'http://localhost:5001/API/60/60/products.json');
         });

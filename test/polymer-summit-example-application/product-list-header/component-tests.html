@@ -25,19 +25,19 @@
     </test-fixture>
 
     <script>
-      suite('product-list-header - component tests', function() {
+      suite('product-list-header - component tests', () => {
 
-        test('instantiating the element works', function() {
+        test('instantiating the element works', () => {
           var element = fixture('basic');
           assert.equal(element.is, 'product-list-header');
         });
 
-        test('Checking default title is correct', function() {
+        test('Checking default title is correct', () => {
           var title = fixture('basic').$$('h2').textContent;
           assert.equal(title, 'Product listing');
         });
 
-        test('Checking overwritten title is correct', function() {
+        test('Checking overwritten title is correct', () => {
           var title = fixture('overwrite-title').$$('h2').textContent;
           assert.equal(title, 'Testing title');
         });

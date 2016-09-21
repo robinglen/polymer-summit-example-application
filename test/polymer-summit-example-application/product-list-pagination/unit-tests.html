@@ -19,29 +19,29 @@
     </test-fixture>
 
     <script>
-      suite('product-list-header - unit tests', function() {
+      suite('product-list-header - unit tests', () => {
 
-        test('Checking it calculates the correct number of total pages', function() {
+        test('Checking it calculates the correct number of total pages', () => {
           var totalPages = fixture('basic')._computeTotalPages(10, 100);
           assert.equal(totalPages, 10);
         });
 
         // These tests on there being a total of three pages
-        test('If the user is on the first page, previous should be disabled, next enabled', function() {
+        test('If the user is on the first page, previous should be disabled, next enabled', () => {
           var previous = fixture('basic')._computePreviousButtonStatus(1);
           var next = fixture('basic')._computeNextButtonStatus(1, 3);
           assert.isTrue(previous);
           assert.isFalse(next);
         });
 
-        test('If the user is on the second page, previous should be enabled, next enabled', function() {
+        test('If the user is on the second page, previous should be enabled, next enabled', () => {
           var previous = fixture('basic')._computePreviousButtonStatus(2);
           var next = fixture('basic')._computeNextButtonStatus(2, 3);
           assert.isFalse(previous);
           assert.isFalse(next);
         });
 
-        test('If the user is on the third page, previous should be enabled, next disabled', function() {
+        test('If the user is on the third page, previous should be enabled, next disabled', () => {
           var previous = fixture('basic')._computePreviousButtonStatus(3);
           var next = fixture('basic')._computeNextButtonStatus(3, 3);
           assert.isFalse(previous);

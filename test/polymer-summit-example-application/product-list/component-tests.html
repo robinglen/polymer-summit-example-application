@@ -74,18 +74,18 @@
     </test-fixture>
 
     <script>
-      suite('product-list - component tests', function() {
+      suite('product-list - component tests', () => {
 
 
-        test('instantiating the element works', function() {
+        test('instantiating the element works', () => {
           var element = fixture('basic');
           assert.equal(element.is, 'product-list');
         });
 
-        test('Has rendered three different products', function(done) {
+        test('Has rendered three different products', (done) => {
           var element = fixture('basic');
            // Wait for element to create any dom-repeat items, and run any functions
-          flush(function() {
+          flush(() => {
             var numberOfProducts = Polymer.dom(element.root).querySelectorAll('simple-product').length;
             assert.equal(numberOfProducts, 3);
             done();
