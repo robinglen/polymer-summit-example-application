@@ -1,38 +1,29 @@
-# \<polymer-summit-example-application\>
+polymer-summit-example-component
 
 An example of a simple product list application to show some design and test principles.
 
-## Install the Polymer-CLI
+Takes advantage of [polymer-summit-example-component](https://github.com/thearegee/polymer-summit-example-component).
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+Setting up
 
-## Viewing Your Application
+Requries Polymer CLI to serve.
 
-```
-$ polymer serve
-```
+```bash
+npm install -g polymer-cli
+bower install
+npm install
+```bash
 
-## Building Your Application
+# Running
 
-```
-$ polymer build
-```
-
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
-
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
-
-```
-$ polymer serve build/bundled
+```bash
+npm start
 ```
 
-## Running Tests
+# Testing
 
-```
-$ polymer test
+```bash
+npm test
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+Built with Polymer CLI.

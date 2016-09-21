@@ -1,0 +1,28 @@
+{
+  "name": "polymer-summit-example-application",
+  "version": "1.0.0",
+  "description": "An example of a simple product list application to show some design and test principles.",
+  "scripts": {
+    "test": "polymer test",
+    "start": "node_modules/.bin/concurrently -k 'node stub-server/server.js' 'polymer serve'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thearegee/polymer-summit-example-application.git"
+  },
+  "keywords": [
+    "polymer",
+    "application",
+    "test",
+    "behaviours"
+  ],
+  "author": "Robin Glen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thearegee/polymer-summit-example-application/issues"
+  },
+  "homepage": "https://github.com/thearegee/polymer-summit-example-application#readme",
+  "dependencies": {
+    "concurrently": "^2.2.0"
+  }
+}
