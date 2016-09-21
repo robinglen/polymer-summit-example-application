@@ -28,24 +28,24 @@
 
         // These tests on there being a total of three pages
         test('If the user is on the first page, previous should be disabled, next enabled', function() {
-          var previous = fixture('basic')._computePagination('previous', 1);
-          var next = fixture('basic')._computePagination('next', 1, 3);
-          assert.isTrue(previous.disabled);
-          assert.isFalse(next.disabled);
+          var previous = fixture('basic')._computePreviousButtonStatus(1);
+          var next = fixture('basic')._computeNextButtonStatus(1, 3);
+          assert.isTrue(previous);
+          assert.isFalse(next);
         });
 
         test('If the user is on the second page, previous should be enabled, next enabled', function() {
-          var previous = fixture('basic')._computePagination('previous', 2);
-          var next = fixture('basic')._computePagination('next', 2, 3);
-          assert.isFalse(previous.disabled);
-          assert.isFalse(next.disabled);
+          var previous = fixture('basic')._computePreviousButtonStatus(2);
+          var next = fixture('basic')._computeNextButtonStatus(2, 3);
+          assert.isFalse(previous);
+          assert.isFalse(next);
         });
 
         test('If the user is on the third page, previous should be enabled, next disabled', function() {
-          var previous = fixture('basic')._computePagination('previous', 3);
-          var next = fixture('basic')._computePagination('next', 3, 3);
-          assert.isFalse(previous.disabled);
-          assert.isTrue(next.disabled);
+          var previous = fixture('basic')._computePreviousButtonStatus(3);
+          var next = fixture('basic')._computeNextButtonStatus(3, 3);
+          assert.isFalse(previous);
+          assert.isTrue(next);
         });
 
       });
