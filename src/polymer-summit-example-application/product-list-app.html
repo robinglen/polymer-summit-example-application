@@ -53,15 +53,15 @@
              * Generates an image URL for the product
              * @param {Number} productsPerPage - number of products per page
              * @param {Number} pageNumber - number of current page
-             * @return {String} api - api url
+             * @return {String} url - api url
              */
             _computeApiUrl: (productsPerPage, pageNumber) => {
                 // hardcoded for demo - could be configurable
                 var apiHost = 'http://localhost:5001';
                 var offset = (pageNumber - 1) * productsPerPage;
-                var path = `${apiHost}/API/${productsPerPage}/${offset}/products.json`;
+                var url = `${apiHost}/API/${productsPerPage}/${offset}/products.json`;
 
-                return path
+                return url
             }
 
         });
