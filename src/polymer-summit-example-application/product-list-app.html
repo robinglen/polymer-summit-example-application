@@ -59,9 +59,8 @@
                 // hardcoded for demo - could be configurable
                 var apiHost = 'http://localhost:5001';
                 var offset = (pageNumber - 1) * productsPerPage;
-                var url = `${apiHost}/API/${productsPerPage}/${offset}/products.json`;
 
-                return url
+                return `${apiHost}/API/${productsPerPage}/${offset}/products.json`;
             }
 
         });
