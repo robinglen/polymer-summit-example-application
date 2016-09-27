@@ -21,7 +21,7 @@
         >
         </iron-ajax>
         <product-list-header title$="[[apiResponse.metadata.title]]"></product-list-header>
-        <product-list-pagination npp="[[npp]]" pn="{{pn}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
+        <product-list-pagination products-per-page="[[productsPerPage]]" pn="{{pn}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
         <product-list products="[[apiResponse.products]]"></product-list>
 
     </template>
@@ -33,12 +33,12 @@
                 // api url
                 url: {
                     type: String,
-                    computed: '_computeApiUrl(npp, pn)'
+                    computed: '_computeApiUrl(productsPerPage, pn)'
                 },
                 // api response
                 apiResponse: Object,
                 // products per page
-                npp: {
+                productsPerPage: {
                     type: Number,
                     value: 60,
                 },

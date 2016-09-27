@@ -37,7 +37,7 @@
 
       properties: {
         // number of products per page
-        npp: {
+        productsPerPage: {
           type: Number,
           value: 60
         },
@@ -52,7 +52,7 @@
         // Total number of product pages
         totalPages: {
           type: Number,
-          computed: '_computeTotalPages(npp, totalProducts)'
+          computed: '_computeTotalPages(productsPerPage, totalProducts)'
         },
         // disabled flag for previous button
         previousDisabled:{
@@ -68,12 +68,12 @@
 
       /**
        * Calculate total number of pages
-       * @param {Number} npp - number of products per page
+       * @param {Number} productsPerPage - number of products per page
        * @param {Number} totalProducts - number of current page
        * @return {Number} totalPages - Total number of pages
        */
-      _computeTotalPages: (npp, totalProducts) => {
-        return Math.ceil((totalProducts / npp));
+      _computeTotalPages: (productsPerPage, totalProducts) => {
+        return Math.ceil((totalProducts / productsPerPage));
       },
 
       /**
