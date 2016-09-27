@@ -15,13 +15,13 @@
 
     <test-fixture id="basic">
       <template>
-        <product-list-pagination products-per-page="10" pn="1" total-products="30"></product-list-pagination>
+        <product-list-pagination products-per-page="10" page-number="1" total-products="30"></product-list-pagination>
       </template>
     </test-fixture>
 
     <test-fixture id="last-page">
       <template>
-        <product-list-pagination products-per-page="10" pn="3" total-products="30"></product-list-pagination>
+        <product-list-pagination products-per-page="10" page-number="3" total-products="30"></product-list-pagination>
       </template>
     </test-fixture>
 
@@ -47,10 +47,10 @@
           // check page has not been updated
           var copy = fixture('basic').$$('#description').textContent;
           var status = pagination.$$('#previous').hasAttribute('disabled');
-          var pn = fixture('basic').pn;
+          var pageNumber = fixture('basic').pageNumber;
           assert.isTrue(status);
           assert.equal(copy, 'Page 1 of 3');
-          assert.equal(pn, 1);
+          assert.equal(pageNumber, 1);
         });
 
         test('Pressing on next on the first page goes to the next page', (done) => {
@@ -73,8 +73,8 @@
               assert.equal(copy, 'Page 2 of 3');
 
               // page number is updated
-              var pn = pagination.pn;
-              assert.equal(pn, 2);
+              var pageNumber = pagination.pageNumber;
+              assert.equal(pageNumber, 2);
 
               done();
             };
@@ -89,10 +89,10 @@
           // check page has not been updated
           var copy = pagination.$$('#description').textContent;
           var status = pagination.$$('#next').hasAttribute('disabled');
-          var pn = pagination.pn;
+          var pageNumber = pagination.pageNumber;
           assert.isTrue(status);
           assert.equal(copy, 'Page 3 of 3');
-          assert.equal(pn, 3);
+          assert.equal(pageNumber, 3);
         });
 
         test('Pressing on previous on the last page goes to the previous page', (done) => {
@@ -112,8 +112,8 @@
               assert.equal(copy, 'Page 2 of 3');
 
               // page number is updated
-              var pn = pagination.pn;
-              assert.equal(pn, 2);
+              var pageNumber = pagination.pageNumber;
+              assert.equal(pageNumber, 2);
 
               done();
             };

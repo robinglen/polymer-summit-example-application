@@ -21,7 +21,7 @@
 
     <div id="controls">
       <button id="previous" disabled="[[previousDisabled]]" on-click="_paginatePrevious">Previous</button>
-      <div id="description">Page [[pn]] of [[totalPages]]</div>
+      <div id="description">Page [[pageNumber]] of [[totalPages]]</div>
       <button id="next" disabled="[[nextDisabled]]" on-click="_paginateNext">Next</button>
     </div>
 
@@ -42,7 +42,7 @@
           value: 60
         },
         // page number
-        pn: {
+        pageNumber: {
           type: Number,
           value: 1,
           notify: true
@@ -57,12 +57,12 @@
         // disabled flag for previous button
         previousDisabled:{
           type: Object,
-          computed: '_computePreviousButtonStatus(pn)'
+          computed: '_computePreviousButtonStatus(pageNumber)'
         },
         // disabled flag for next button
         nextDisabled:{
           type: Object,
-          computed: '_computeNextButtonStatus(pn, totalPages)'
+          computed: '_computeNextButtonStatus(pageNumber, totalPages)'
         }
       },
 
@@ -78,14 +78,14 @@
 
       /**
        * Flag for if the next button should be disabled
-       * @param {Number} pn - current page number
+       * @param {Number} pageNumber - current page number
        * @param {Number} totalPages - Total number of pages
        * @return {Boolean} disabled - Flag for if next button should be disabled
        */
-      _computeNextButtonStatus: (pn, totalPages) => {
+      _computeNextButtonStatus: (pageNumber, totalPages) => {
           var disabled = true;
-          if (pn < totalPages) {
-            pn++;
+          if (pageNumber < totalPages) {
+            pageNumber++;
             disabled = false;
           };
           return disabled;
@@ -93,13 +93,13 @@
 
       /**
        * Flag for if the previous button should be disabled
-       * @param {Number} pn - current page number
+       * @param {Number} pageNumber - current page number
        * @return {Boolean} disabled - Flag for if previous button should be disabled
        */
-      _computePreviousButtonStatus: (pn) => {
+      _computePreviousButtonStatus: (pageNumber) => {
           var disabled = true;
-          if (pn > 1) {
-            pn--;
+          if (pageNumber > 1) {
+            pageNumber--;
             disabled = false;
           }
           return disabled;
@@ -109,9 +109,9 @@
        * Paginate to the next page
        */
       _paginateNext: function() {
-        this.set('pn', this.pn + 1);
+        this.set('pageNumber', this.pageNumber + 1);
         this.fire('pagination', {
-            pn: this.pn
+            pageNumber: this.pageNumber
         });
       },
 
@@ -119,9 +119,9 @@
        * Paginate to the previous page
        */
       _paginatePrevious: function()  {
-        this.set('pn', this.pn - 1);
+        this.set('pageNumber', this.pageNumber - 1);
         this.fire('pagination', {
-            pn: this.pn
+            pageNumber: this.pageNumber
         });
       }
 
