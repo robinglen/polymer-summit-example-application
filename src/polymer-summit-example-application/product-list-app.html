@@ -17,11 +17,14 @@
             auto="true"
             handle-as="json"
             url="[[url]]"
-            last-response="{{apiResponse}}"
-        >
+            last-response="{{apiResponse}}">
         </iron-ajax>
         <product-list-header title$="[[apiResponse.metadata.title]]"></product-list-header>
-        <product-list-pagination products-per-page="[[productsPerPage]]" page-number="{{pageNumber}}" total-products="[[apiResponse.listInfo.total]]"></product-list-pagination>
+        <product-list-pagination
+            products-per-page="[[productsPerPage]]"
+            page-number="{{pageNumber}}"
+            total-products="[[apiResponse.listInfo.total]]">
+        </product-list-pagination>
         <product-list products="[[apiResponse.products]]"></product-list>
 
     </template>
